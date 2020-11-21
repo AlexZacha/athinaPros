@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MasterPageController">
+   <children>
+      <Label layoutX="253.0" layoutY="14.0" text=" Athina" textFill="#4a4a4a">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="logoutbutton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#logoutButtonPressed" text="Logout" />
+      <Button fx:id="statistikaButton" layoutX="189.0" layoutY="93.0" mnemonicParsing="false" text="Στατιστηκά Στοιχεία απο Βαθμολογίες" />
+      <Button fx:id="diorthoVathButton" layoutX="188.0" layoutY="137.0" mnemonicParsing="false" text="Διορθωτική Βαθμολογία" />
+      <Button fx:id="finalizeGradeButton" layoutX="188.0" layoutY="215.0" mnemonicParsing="false" text="Οριστικοποίηση διόρθωσεις βαθμολογιάς" />
+      <Button fx:id="viewCourseGradesButton" layoutX="183.0" layoutY="268.0" mnemonicParsing="false" text="Προβολή μαθήματων/βαθμολογιών" />
+      <Button fx:id="adduserButton" layoutX="189.0" layoutY="175.0" mnemonicParsing="false" text="Καταχώρηση νέων χρηστών" />
+      <Label fx:id="usernameLabel" layoutX="415.0" layoutY="14.0" prefHeight="32.0" prefWidth="171.0" textFill="#4a4a4a">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
