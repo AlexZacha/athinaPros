@@ -12,10 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- *
- * @author dimi44
- */
 public class Athina extends Application {
     public static User user;
     
