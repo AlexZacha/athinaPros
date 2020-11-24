@@ -50,6 +50,7 @@ public class Account {
         for (int i=0; i<admins.length; i++){
             if (admins[i] == null)
                 admins[i] = admin;
+                SMTP.sendEmail(users[i].getFirstName(), users[i].getLastName(), users[i].getUsername(), users[i].getPassword());
         }
     }
     

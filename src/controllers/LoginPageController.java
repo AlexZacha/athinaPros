@@ -84,7 +84,18 @@ public class LoginPageController implements Initializable {
                 if(s.getUsername().equals(username) && s.getPassword().equals(password))
                 {
                     Athina.user=s;
-                    gotToMaster(event);
+                    try{
+                        Scene scene=new Scene(FXMLLoader.load(getClass().getResource("/views/StudentMainPage.fxml")));
+                        Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+                        window.setScene(scene);
+                        window.setResizable(false);
+                        window.setTitle("Athina");
+                        window.show();
+                    }
+                    catch(IOException e)
+                    {
+                        e.printStackTrace();
+                    }
                     return;
                 }
             }
