@@ -25,10 +25,9 @@ public class StudentMainPage {
     @FXML
     private ToggleGroup group;
     @FXML
-    private RadioButton arxikhSelida;
+    private RadioButton arxikhSelida, bathmologies;
     @FXML
     private AnchorPane arxikhSelidaPanel;
-
 
     @FXML
     public void setLabels(ActionEvent actionEvent) {
@@ -41,10 +40,7 @@ public class StudentMainPage {
         examLabel.setText(String.valueOf(student.getCurrentSemester()));
         emailLabel.setText(student.getEmail());
     }
-
-    @FXML
-
-
+    
     public void logoutButtonPressed(ActionEvent event)
     {
         try{
