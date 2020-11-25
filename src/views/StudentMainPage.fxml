@@ -105,8 +105,8 @@
       </AnchorPane>
       <AnchorPane fx:id="bathmologiesPanel" layoutX="196.0" layoutY="2.0" prefHeight="464.0" prefWidth="510.0" style="-fx-background-color: white;" visible="false">
          <children>
-            <Separator prefHeight="2.0" prefWidth="499.0" />
-            <Label prefHeight="45.0" prefWidth="149.0" style="-fx-background-color: white;" text="Βαθμολογίες" AnchorPane.bottomAnchor="390.0" AnchorPane.rightAnchor="188.0">
+            <Separator prefHeight="2.0" prefWidth="499.0" AnchorPane.bottomAnchor="333.0" />
+            <Label prefHeight="45.0" prefWidth="149.0" style="-fx-background-color: white;" text="Βαθμολογίες" AnchorPane.bottomAnchor="392.0" AnchorPane.rightAnchor="179.0">
                <font>
                   <Font size="18.0" />
                </font>
