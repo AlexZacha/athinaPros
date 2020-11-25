@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import models.Student;
 import javafx.scene.control.TextField;
@@ -19,9 +21,13 @@ public class StudentMainPage {
     @FXML
     public  TextField usernameLabel, lastnameLabel, nameLabel, amLabel, examLabel, emailLabel, roleLabel;
     @FXML
-    private Button test;
+    private Button arxikhSelida;
+    @FXML
+    private AnchorPane arxikhSelidaPanel;
 
+    @FXML
     public void setLabels(ActionEvent actionEvent) {
+        arxikhSelidaPanel.setVisible(true);
         Student student = (Student) Athina.user;
         roleLabel.setText("Στοιχεία Φοιτητή");
         usernameLabel.setText(student.getUsername());
