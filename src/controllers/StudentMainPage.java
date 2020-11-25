@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -19,11 +21,14 @@ import java.io.IOException;
 public class StudentMainPage {
 
     @FXML
-    public  TextField usernameLabel, lastnameLabel, nameLabel, amLabel, examLabel, emailLabel, roleLabel;
+    private   TextField usernameLabel, lastnameLabel, nameLabel, amLabel, examLabel, emailLabel, roleLabel;
     @FXML
-    private Button arxikhSelida;
+    private ToggleGroup group;
+    @FXML
+    private RadioButton arxikhSelida;
     @FXML
     private AnchorPane arxikhSelidaPanel;
+
 
     @FXML
     public void setLabels(ActionEvent actionEvent) {
@@ -36,6 +41,9 @@ public class StudentMainPage {
         examLabel.setText(String.valueOf(student.getCurrentSemester()));
         emailLabel.setText(student.getEmail());
     }
+
+    @FXML
+
 
     public void logoutButtonPressed(ActionEvent event)
     {

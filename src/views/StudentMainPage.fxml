@@ -2,8 +2,10 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -17,7 +19,12 @@
                </font>
             </Label>
             <Button layoutX="51.0" layoutY="396.0" mnemonicParsing="false" onAction="#logoutButtonPressed" text="Αποσύνδεση" />
-            <Button fx:id="arxikhSelida" defaultButton="true" layoutX="68.0" layoutY="81.0" mnemonicParsing="false" onAction="#setLabels" text="Αρχική" />
+            <RadioButton fx:id="arxikhSelida" layoutX="51.0" layoutY="93.0" mnemonicParsing="false" onAction="#setLabels" selected="true" text="Αρχική">
+               <toggleGroup>
+                  <ToggleGroup fx:id="group" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton layoutX="50.0" layoutY="125.0" mnemonicParsing="false" text="RadioButton" toggleGroup="$group" />
          </children></AnchorPane>
     <AnchorPane fx:id="arxikhSelidaPanel" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: white;" visible="false">
          <children>

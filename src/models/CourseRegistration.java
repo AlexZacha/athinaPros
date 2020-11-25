@@ -13,15 +13,16 @@ public class CourseRegistration {
     private Student student;
     private Course course;
     private String registrationSemester;
-    private float grade;
     private String dateExamined;
     private String dateRegistered;
-    
-    public CourseRegistration(Student student, Course course, String registrationSemester,String dateRegistered) {
+    private Bathmologies bathmologies;
+
+    public CourseRegistration(Student student, Course course, String registrationSemester,String dateRegistered, Bathmologies bathmologies) {
         this.student = student;
         this.course = course;
         this.registrationSemester = registrationSemester;
         this.dateRegistered = dateRegistered;
+        this.bathmologies = bathmologies;
     }
 
     public Student getStudent() {
@@ -36,10 +37,7 @@ public class CourseRegistration {
         return course;
     }
 
-    public void setGrade(float grade) {
-        this.grade = grade;
-    }
-    
+
     public void setDateExamined(String date) {
         this.dateExamined = date;
     }
@@ -52,12 +50,8 @@ public class CourseRegistration {
                 return dateRegistered;
     }
 
-    public float getGrade() {
-        return grade;
-    }
-
     @Override
     public String toString() {
-        return "CourseRegistration{" + "student=" + student + ", course=" + course + ", registrationSemester=" + registrationSemester + ", grade=" + grade + '}';
+        return "CourseRegistration{" + "student=" + student + ", course=" + course + ", registrationSemester=" + registrationSemester + '}';
     }
 }

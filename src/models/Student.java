@@ -11,7 +11,7 @@ package models;
  */
 public class Student extends User{
      private int currentSemester;
-    private String dateEnrolled;
+     private String dateEnrolled;
     
     public Student(String username,String password, String firstName,
         String lastName,int currentSemester,String dateEnrolled) {
