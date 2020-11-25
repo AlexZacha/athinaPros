@@ -37,7 +37,6 @@ public class LoginPageController implements Initializable {
     private TextField passwordField;
     @FXML
     private Label errorLabel;
-    
 
     /**
      * Initializes the controller class.
@@ -96,6 +95,7 @@ public class LoginPageController implements Initializable {
                     {
                         e.printStackTrace();
                     }
+
                     return;
                 }
             }
@@ -119,7 +119,11 @@ public class LoginPageController implements Initializable {
     
     //εδω ειναι η κεντρικη σελιδα 
     
-    
+    public void setLabels(){
+
+    }
+
+
     public void gotToMaster(ActionEvent event)
     {
         try{
