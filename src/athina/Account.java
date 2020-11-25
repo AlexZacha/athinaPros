@@ -33,11 +33,19 @@ public class Account {
         courses[2] = new Course("071", "Mhxaniki Logismikou", 6,7, professors[1]);
         courses[3] = new Course("044", "Sxediash Leitourgikwn Systimatwn", 6, 4, professors[1]);
         
-        registrations[0] = new CourseRegistration(students[0], courses[0], "2018-19 ΕΑΡ","20/5/2019", 6);
-        registrations[1] = new CourseRegistration(students[1], courses[1], "2018-19 XEIM","20/11/2020", 4);
-        registrations[2] = new CourseRegistration(students[2], courses[2], "2018-19 ΕΑΡ","20/5/2019",7);
-        registrations[3] = new CourseRegistration(students[2], courses[3], "2018-19 XEIM","20/11/2020",(1));
-        registrations[4] = new CourseRegistration(students[0], courses[2], "2018-19 ΕΑΡ","20/5/2019", 8);
+        registrations[0] = new CourseRegistration(students[0], courses[0], "2018-19 ΕΑΡ","20/5/2019");
+        registrations[1] = new CourseRegistration(students[1], courses[1], "2018-19 XEIM","20/11/2020");
+        registrations[2] = new CourseRegistration(students[2], courses[2], "2018-19 ΕΑΡ","20/5/2019");
+        registrations[3] = new CourseRegistration(students[2], courses[3], "2018-19 XEIM","20/11/2020");
+        registrations[4] = new CourseRegistration(students[0], courses[2], "2018-19 ΕΑΡ","20/5/2019");
+        registrations[5] = new CourseRegistration(students[0], courses[3], "2018-19 ΕΑΡ","20/5/2019");
+
+        registrations[0].setBathmos(6);
+        registrations[1].setBathmos(4);
+        registrations[3].setBathmos(7);
+        registrations[4].setBathmos(8);
+
+        registrations[0].setKainBathmos(9);
     }
     public static void insertAdmin(Admin admin) {
         for (int i=0; i<admins.length; i++){
@@ -73,7 +81,7 @@ public class Account {
      public static void insertRegistration(Student student, Course course) {
         for(int i=0; i<registrations.length; i++){
             if (registrations[i] == null) {
-                registrations[i] = new CourseRegistration(student, course, "2018-19 XEIM","20/11/2020", -1);
+                registrations[i] = new CourseRegistration(student, course, "2018-19 XEIM","20/11/2020");
             }
         }
         

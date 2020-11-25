@@ -1,5 +1,6 @@
 package controllers;
 
+import athina.Account;
 import athina.Athina;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,10 +26,13 @@ public class StudentMainPage {
     @FXML
     private RadioButton arxikhSelida, bathmologies, mathhmata, dhlwseis;
     @FXML
-    private AnchorPane arxikhSelidaPanel, bathmologiesPanel;
+    private AnchorPane arxikhSelidaPanel, bathmologiesPanel, mathhmataPanel;
     @FXML
     private ListView bathmList = new ListView();
+    @FXML
+    private ListView mathhmataList = new ListView();
     private boolean firstTime = true;
+    private boolean firstTimeTwo = true;
 
     @FXML
     public void setLabels(ActionEvent actionEvent) {
@@ -47,21 +51,34 @@ public class StudentMainPage {
     public void emfBathologias(ActionEvent event){
         setVis();
         bathmologiesPanel.setVisible(true);
-        CourseRegistration courseRegistration[];
+        CourseRegistration[] courseRegistration;
         Student student = (Student) Athina.user;
         courseRegistration = student.getBathmologies(student.getUsername());
         for (int i =0; i<courseRegistration.length; i++){
-            if (courseRegistration[i] != null && firstTime && courseRegistration[i].getBathmos() != -1){
-                bathmList.getItems().add((courseRegistration[i].toString()));
-
+            if (courseRegistration[i] != null && firstTime){
+                    bathmList.getItems().add((courseRegistration[i].toString()));
             }
         }
         firstTime = false;
     }
 
+    @FXML
+    public void emfMathhmatwn(ActionEvent event){
+        setVis();
+        mathhmataPanel.setVisible(true);
+        Student student = (Student) Athina.user;
+        for (int i =0; i< Account.registrations.length; i++){
+            if (Account.registrations[i] != null && Account.registrations[i].getStudent().getUsername().equals(student.getUsername()) && firstTimeTwo){
+                mathhmataList.getItems().add(Account.registrations[i].getCourse());
+            }
+        }
+        firstTimeTwo = false;
+    }
+
     private void setVis(){
         arxikhSelidaPanel.setVisible(false);
         bathmologiesPanel.setVisible(false);
+        mathhmataPanel.setVisible(false);
     }
 
     public void logoutButtonPressed(ActionEvent event)

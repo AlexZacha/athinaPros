@@ -16,13 +16,15 @@ public class CourseRegistration {
     private String dateExamined;
     private String dateRegistered;
     private float bathmos;
+    private float kainBathmos;
 
-    public CourseRegistration(Student student, Course course, String registrationSemester,String dateRegistered,  float bathmos) {
+    public CourseRegistration(Student student, Course course, String registrationSemester,String dateRegistered) {
         this.student = student;
         this.course = course;
         this.registrationSemester = registrationSemester;
         this.dateRegistered = dateRegistered;
-        this.bathmos = bathmos;
+        bathmos = -1;
+        kainBathmos = -1;
     }
 
     public Student getStudent() {
@@ -57,12 +59,29 @@ public class CourseRegistration {
                 return dateRegistered;
     }
 
+    public float getKainBathmos() {
+        return kainBathmos;
+    }
+
+    public void setKainBathmos(float kainBathmos) {
+        this.kainBathmos = kainBathmos;
+    }
+
+
 
     @Override
     public String toString() {
-        return "" +
-                "        " + course +
-                "        " + registrationSemester + '\'' +
-                "        " + bathmos;
+        if (bathmos != -1) {
+            if (kainBathmos != -1){
+                return "" +
+                        course +
+                        " " + registrationSemester + '\'' +
+                        " " + bathmos + "-παλιός " + kainBathmos + "-νεος" ;
+            }
+            return "" +
+                    " " + course +
+                    " " + registrationSemester + '\''  + " " + bathmos;
+        }
+        return "";
     }
 }
