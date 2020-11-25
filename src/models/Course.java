@@ -47,7 +47,7 @@ public class Course {
     
     @Override
     public String toString() {
-        return name;
+        return id + " " + name + " " + professor.getLastName() + " " + professor.getFirstName();
     }
     
 }

@@ -1,9 +1,0 @@
-ul {
-    -fx-list-style: none;
-}
-input {
-    -fx-visibility:hidden;
-}
-label {
-    -fx-cursor: pointer;
-}

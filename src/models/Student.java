@@ -5,6 +5,8 @@
  */
 package models;
 
+import athina.Account;
+
 /**
  *
  * @author dimi44
@@ -14,17 +16,23 @@ public class Student extends User{
      private String dateEnrolled;
     
     public Student(String username,String password, String firstName,
-        String lastName,int currentSemester,String dateEnrolled) {
-        super(username, password, firstName, lastName);
+        String lastName, String email, int currentSemester,String dateEnrolled) {
+        super(username, password, firstName, lastName, email);
         this.currentSemester = currentSemester;
         this.dateEnrolled = dateEnrolled;
     }
     
-    /*public ArrayList<CourseRegistration> getRegistrations(){
-        int i=0;
-        ArrayList <CourseRegistration> currentRegistrations=new ArrayList<>();
-        
-    }*/
+    public CourseRegistration[] getBathmologies(String username){
+        CourseRegistration courseRegistration[] = new CourseRegistration[Account.registrations.length];
+        int y =0;
+        for (int i = 0; i <Account.registrations.length; i++){
+            if (Account.registrations[i] != null && username.equals(Account.registrations[i].getStudent().getUsername())){
+                courseRegistration[y] = Account.registrations[i];
+                y++;
+            }
+        }
+        return courseRegistration;
+    }
     
     
      public int getCurrentSemester() {

@@ -6,14 +6,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import models.CourseRegistration;
 import models.Student;
-import javafx.scene.control.TextField;
 import models.User;
 
 import java.io.IOException;
@@ -25,12 +23,16 @@ public class StudentMainPage {
     @FXML
     private ToggleGroup group;
     @FXML
-    private RadioButton arxikhSelida, bathmologies;
+    private RadioButton arxikhSelida, bathmologies, mathhmata, dhlwseis;
     @FXML
-    private AnchorPane arxikhSelidaPanel;
+    private AnchorPane arxikhSelidaPanel, bathmologiesPanel;
+    @FXML
+    private ListView bathmList = new ListView();
+    private boolean firstTime = true;
 
     @FXML
     public void setLabels(ActionEvent actionEvent) {
+        setVis();
         arxikhSelidaPanel.setVisible(true);
         Student student = (Student) Athina.user;
         roleLabel.setText("Στοιχεία Φοιτητή");
@@ -40,7 +42,28 @@ public class StudentMainPage {
         examLabel.setText(String.valueOf(student.getCurrentSemester()));
         emailLabel.setText(student.getEmail());
     }
-    
+
+    @FXML
+    public void emfBathologias(ActionEvent event){
+        setVis();
+        bathmologiesPanel.setVisible(true);
+        CourseRegistration courseRegistration[];
+        Student student = (Student) Athina.user;
+        courseRegistration = student.getBathmologies(student.getUsername());
+        for (int i =0; i<courseRegistration.length; i++){
+            if (courseRegistration[i] != null && firstTime && courseRegistration[i].getBathmos() != -1){
+                bathmList.getItems().add((courseRegistration[i].toString()));
+
+            }
+        }
+        firstTime = false;
+    }
+
+    private void setVis(){
+        arxikhSelidaPanel.setVisible(false);
+        bathmologiesPanel.setVisible(false);
+    }
+
     public void logoutButtonPressed(ActionEvent event)
     {
         try{

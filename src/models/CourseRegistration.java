@@ -15,14 +15,14 @@ public class CourseRegistration {
     private String registrationSemester;
     private String dateExamined;
     private String dateRegistered;
-    private Bathmologies bathmologies;
+    private float bathmos;
 
-    public CourseRegistration(Student student, Course course, String registrationSemester,String dateRegistered, Bathmologies bathmologies) {
+    public CourseRegistration(Student student, Course course, String registrationSemester,String dateRegistered,  float bathmos) {
         this.student = student;
         this.course = course;
         this.registrationSemester = registrationSemester;
         this.dateRegistered = dateRegistered;
-        this.bathmologies = bathmologies;
+        this.bathmos = bathmos;
     }
 
     public Student getStudent() {
@@ -37,6 +37,13 @@ public class CourseRegistration {
         return course;
     }
 
+    public float getBathmos() {
+        return bathmos;
+    }
+
+    public void setBathmos(float bathmos) {
+        this.bathmos = bathmos;
+    }
 
     public void setDateExamined(String date) {
         this.dateExamined = date;
@@ -50,8 +57,12 @@ public class CourseRegistration {
                 return dateRegistered;
     }
 
+
     @Override
     public String toString() {
-        return "CourseRegistration{" + "student=" + student + ", course=" + course + ", registrationSemester=" + registrationSemester + '}';
+        return "" +
+                "        " + course +
+                "        " + registrationSemester + '\'' +
+                "        " + bathmos;
     }
 }
