@@ -77,7 +77,7 @@ public class StudentMainPage {
 
                 }
 
-        }
+        }   
             String mesosOros = String.format("%.2f", sum/count);
             mesosOrosText.setText(mesosOros);
             dmTextField.setText(String.valueOf(dm));
