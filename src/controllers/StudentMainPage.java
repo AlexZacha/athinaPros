@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import models.Course;
 import models.CourseRegistration;
 import models.Student;
 import models.User;
@@ -31,8 +32,12 @@ public class StudentMainPage {
     private ListView bathmList = new ListView();
     @FXML
     private ListView mathhmataList = new ListView();
+    @FXML
+    private ListView olaTaMath = new ListView();
+
     private boolean firstTime = true;
     private boolean firstTimeTwo = true;
+    private boolean firstTimeTree = true;
 
     public StudentMainPage() {
     }
@@ -77,7 +82,7 @@ public class StudentMainPage {
 
                 }
 
-        }   
+        }
             String mesosOros = String.format("%.2f", sum/count);
             mesosOrosText.setText(mesosOros);
             dmTextField.setText(String.valueOf(dm));
@@ -99,11 +104,34 @@ public class StudentMainPage {
         firstTimeTwo = false;
     }
 
+    @FXML
+    public void dhlwseisMath(ActionEvent event){
+        setVis();
+        dhlwseisPanel.setVisible(true);
+        if (firstTimeTree){
+            for (int i = 0; i < Account.courses.length; i++){
+                if (!toExeiDhlwsei(i)){
+                    olaTaMath.getItems().add(Account.courses[i]);
+                }
+            }
+        }
+        firstTimeTree = false;
+    }
+
+    public boolean toExeiDhlwsei(int y){
+        for (int i = 0; i< Account.registrations.length; i++){
+            if (Account.registrations[i].getCourse().getId() == Account.courses[y].getId()) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     private void setVis(){
         arxikhSelidaPanel.setVisible(false);
         bathmologiesPanel.setVisible(false);
         mathhmataPanel.setVisible(false);
+        dhlwseisPanel.setVisible(false);
     }
 
     public void logoutButtonPressed(ActionEvent event)
