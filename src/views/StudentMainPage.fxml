@@ -131,7 +131,7 @@
             <Label layoutX="122.0" layoutY="425.0" prefHeight="25.0" prefWidth="69.0" text="Μέσος όρος:" />
             <TextField fx:id="mesosOrosText" editable="false" layoutX="209.0" layoutY="425.0" prefHeight="25.0" prefWidth="39.0" />
             <Label layoutX="14.0" layoutY="393.0" text="Σύνολο περασμένων μαθημάτων:" />
-            <TextField editable="false" layoutX="209.0" layoutY="389.0" prefHeight="25.0" prefWidth="39.0" />
+            <TextField fx:id="perasmMathField" editable="false" layoutX="209.0" layoutY="389.0" prefHeight="25.0" prefWidth="39.0" />
             <Label layoutX="405.0" layoutY="393.0" text="Διδακτικές μονάδες:" />
             <TextField fx:id="dmTextField" editable="false" layoutX="522.0" layoutY="389.0" prefHeight="25.0" prefWidth="39.0" />
          </children>

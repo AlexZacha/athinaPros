@@ -20,7 +20,7 @@ import java.io.IOException;
 public class StudentMainPage {
 
     @FXML
-    private   TextField usernameLabel, lastnameLabel, nameLabel, amLabel, examLabel, emailLabel, roleLabel, mesosOrosText,dmTextField, perasmMathLabel;
+    private TextField usernameLabel, lastnameLabel, nameLabel, amLabel, examLabel, emailLabel, roleLabel, mesosOrosText,dmTextField, perasmMathField;
     @FXML
     private ToggleGroup group;
     @FXML
@@ -33,6 +33,9 @@ public class StudentMainPage {
     private ListView mathhmataList = new ListView();
     private boolean firstTime = true;
     private boolean firstTimeTwo = true;
+
+    public StudentMainPage() {
+    }
 
     @FXML
     public void setLabels(ActionEvent actionEvent) {
@@ -51,33 +54,34 @@ public class StudentMainPage {
     public void emfBathologias(ActionEvent event){
         setVis();
         bathmologiesPanel.setVisible(true);
-        CourseRegistration[] courseRegistration;
-        Student student = (Student) Athina.user;
-        courseRegistration = student.getBathmologies(student.getUsername());
-        float sum = 0;
-        int count = 0;
-        int dm = 0;
-        for (int i =0; i<courseRegistration.length; i++){
-            if (courseRegistration[i] != null && firstTime){
-                    bathmList.getItems().add((courseRegistration[i].toString()));
-                    if (courseRegistration[i].getKainBathmos() != -1 && courseRegistration[i].getKainBathmos() >= 5){
-                        sum+= courseRegistration[i].getKainBathmos();
-                        dm+= courseRegistration[i].getCourse().getCredits();
-                        count++;
-                    }
-                    else if (courseRegistration[i].getBathmos() != -1 && courseRegistration[i].getBathmos() >= 5){
-                        sum+= courseRegistration[i].getBathmos();
-                        dm+= courseRegistration[i].getCourse().getCredits();
-                        count++;
-                    }
-
-            }
-        }
         if (firstTime){
+            CourseRegistration[] courseRegistration;
+            Student student = (Student) Athina.user;
+            courseRegistration = student.getBathmologies(student.getUsername());
+            float sum = 0;
+            int count = 0;
+            int dm = 0;
+            for (int i =0; i<courseRegistration.length; i++){
+                if (courseRegistration[i] != null){
+                        bathmList.getItems().add((courseRegistration[i].toString()));
+                        if (courseRegistration[i].getKainBathmos() != -1 && courseRegistration[i].getKainBathmos() >= 5){
+                            sum+= courseRegistration[i].getKainBathmos();
+                            dm+= courseRegistration[i].getCourse().getCredits();
+                            count++;
+                        }
+                        else if (courseRegistration[i].getBathmos() != -1 && courseRegistration[i].getBathmos() >= 5){
+                            sum+= courseRegistration[i].getBathmos();
+                            dm+= courseRegistration[i].getCourse().getCredits();
+                            count++;
+                        }
+
+                }
+
+        }
             String mesosOros = String.format("%.2f", sum/count);
             mesosOrosText.setText(mesosOros);
             dmTextField.setText(String.valueOf(dm));
-            perasmMathLabel.setText(String.valueOf(count));
+            perasmMathField.setText(String.valueOf(count));
         }
         firstTime = false;
     }
@@ -86,15 +90,14 @@ public class StudentMainPage {
     public void emfMathhmatwn(ActionEvent event){
         setVis();
         mathhmataPanel.setVisible(true);
-        Student student = (Student) Athina.user;
-        for (int i =0; i< Account.registrations.length; i++){
-            if (Account.registrations[i] != null && Account.registrations[i].getStudent().getUsername().equals(student.getUsername()) && firstTimeTwo){
-                mathhmataList.getItems().add(Account.registrations[i].getCourse());
+        if (firstTimeTwo){
+            for (int i =0; i< Account.courses.length; i++){
+                if (Account.courses[i] != null )
+                    mathhmataList.getItems().add(Account.courses[i]);
             }
         }
         firstTimeTwo = false;
     }
-
 
 
     private void setVis(){
