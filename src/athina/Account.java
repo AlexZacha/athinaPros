@@ -44,7 +44,7 @@ public class Account {
         registrations[1].setBathmos(4);
         registrations[3].setBathmos(7);
         registrations[4].setBathmos(8);
-
+        registrations[5].setBathmos(3);
         registrations[0].setKainBathmos(9);
     }
     public static void insertAdmin(Admin admin) {

@@ -73,14 +73,14 @@ public class CourseRegistration {
     public String toString() {
         if (bathmos != -1) {
             if (kainBathmos != -1){
-                return "" +
-                        course +
-                        " " + registrationSemester + '\'' +
-                        " " + bathmos + "-παλιός " + kainBathmos + "-νεος" ;
+                return "Μάθημα: " +
+                        course + " | " +
+                        " Εξάμηνο: " + registrationSemester + '\'' +" | " +
+                        " Βαθμός " + bathmos + "-παλιός " + " | " + kainBathmos + "-νεος" ;
             }
-            return "" +
-                    " " + course +
-                    " " + registrationSemester + '\''  + " " + bathmos;
+            return "Μάθημα: " +
+                    course + " | " +
+                    " Εξάνηνο: " + registrationSemester + " | " + '\''  + " Βαθμός: " + bathmos;
         }
         return "";
     }

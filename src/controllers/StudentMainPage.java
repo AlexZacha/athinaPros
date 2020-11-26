@@ -20,13 +20,13 @@ import java.io.IOException;
 public class StudentMainPage {
 
     @FXML
-    private   TextField usernameLabel, lastnameLabel, nameLabel, amLabel, examLabel, emailLabel, roleLabel;
+    private   TextField usernameLabel, lastnameLabel, nameLabel, amLabel, examLabel, emailLabel, roleLabel, mesosOrosText,dmTextField, perasmMathLabel;
     @FXML
     private ToggleGroup group;
     @FXML
     private RadioButton arxikhSelida, bathmologies, mathhmata, dhlwseis;
     @FXML
-    private AnchorPane arxikhSelidaPanel, bathmologiesPanel, mathhmataPanel;
+    private AnchorPane arxikhSelidaPanel, bathmologiesPanel, mathhmataPanel, dhlwseisPanel;
     @FXML
     private ListView bathmList = new ListView();
     @FXML
@@ -54,10 +54,30 @@ public class StudentMainPage {
         CourseRegistration[] courseRegistration;
         Student student = (Student) Athina.user;
         courseRegistration = student.getBathmologies(student.getUsername());
+        float sum = 0;
+        int count = 0;
+        int dm = 0;
         for (int i =0; i<courseRegistration.length; i++){
             if (courseRegistration[i] != null && firstTime){
                     bathmList.getItems().add((courseRegistration[i].toString()));
+                    if (courseRegistration[i].getKainBathmos() != -1 && courseRegistration[i].getKainBathmos() >= 5){
+                        sum+= courseRegistration[i].getKainBathmos();
+                        dm+= courseRegistration[i].getCourse().getCredits();
+                        count++;
+                    }
+                    else if (courseRegistration[i].getBathmos() != -1 && courseRegistration[i].getBathmos() >= 5){
+                        sum+= courseRegistration[i].getBathmos();
+                        dm+= courseRegistration[i].getCourse().getCredits();
+                        count++;
+                    }
+
             }
+        }
+        if (firstTime){
+            String mesosOros = String.format("%.2f", sum/count);
+            mesosOrosText.setText(mesosOros);
+            dmTextField.setText(String.valueOf(dm));
+            perasmMathLabel.setText(String.valueOf(count));
         }
         firstTime = false;
     }
@@ -74,6 +94,8 @@ public class StudentMainPage {
         }
         firstTimeTwo = false;
     }
+
+
 
     private void setVis(){
         arxikhSelidaPanel.setVisible(false);
