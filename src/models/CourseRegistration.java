@@ -67,20 +67,28 @@ public class CourseRegistration {
         this.kainBathmos = kainBathmos;
     }
 
+    public String getRegistrationSemester() {
+        return registrationSemester;
+    }
 
+    public String toString2() {
+        return
+                " bathmos=" + bathmos +
+                ", kainBathmos=" + kainBathmos ;
+    }
 
     @Override
     public String toString() {
         if (bathmos != -1) {
             if (kainBathmos != -1){
-                return "Μάθημα: " +
+                return
                         course + " | " +
-                        " Εξάμηνο: " + registrationSemester + '\'' +" | " +
-                        " Βαθμός " + bathmos + "-παλιός " + " | " + kainBathmos + "-νεος" ;
+                        "" + registrationSemester + '\'' +" | " +
+                        " " + bathmos + "-παλιός " + " | " + kainBathmos + "-νεος" ;
             }
-            return "Μάθημα: " +
+            return " " +
                     course + " | " +
-                    " Εξάνηνο: " + registrationSemester + " | " + '\''  + " Βαθμός: " + bathmos;
+                    " " + registrationSemester + " | " + '\''  + "" + bathmos;
         }
         return "";
     }

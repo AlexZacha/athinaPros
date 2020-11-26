@@ -44,10 +44,15 @@ public class Course {
     public Professor getProfessor() {
         return professor;
     }
-    
+
     @Override
     public String toString() {
-        return id + " " + name + " " + professor.getLastName() + " " + professor.getFirstName();
+        return "Course{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", credits=" + credits +
+                ", semester=" + semester +
+                ", professor=" + professor +
+                '}';
     }
-    
 }

@@ -9,23 +9,20 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import models.Course;
 import models.CourseRegistration;
 import models.Student;
-import models.User;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class StudentMainPage {
 
     @FXML
-    private TextField usernameLabel, lastnameLabel, nameLabel, amLabel, examLabel, emailLabel, roleLabel, mesosOrosText,dmTextField, perasmMathField;
-    @FXML
-    private ToggleGroup group;
-    @FXML
-    private RadioButton arxikhSelida, bathmologies, mathhmata, dhlwseis;
+    private TextField usernameLabel, lastnameLabel, nameLabel, amLabel, examLabel, emailLabel, roleLabel, mesosOrosText,dmTextField, perasmMathField, sunoloDM, sunoloMath,errorField;
     @FXML
     private AnchorPane arxikhSelidaPanel, bathmologiesPanel, mathhmataPanel, dhlwseisPanel;
     @FXML
@@ -34,20 +31,27 @@ public class StudentMainPage {
     private ListView mathhmataList = new ListView();
     @FXML
     private ListView olaTaMath = new ListView();
+    @FXML
+    private ListView epilegmenaMath = new ListView();
+    @FXML
+    private Button addBtn, removeBtn;
+    @FXML
+    private Label confirmText;
 
+    private int dm = 0;
+    private int arithmosMath = 0;
     private boolean firstTime = true;
     private boolean firstTimeTwo = true;
     private boolean firstTimeTree = true;
 
-    public StudentMainPage() {
-    }
+    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+    Date date = new Date();
 
     @FXML
-    public void setLabels(ActionEvent actionEvent) {
+    private void setLabels(ActionEvent actionEvent) {
         setVis();
         arxikhSelidaPanel.setVisible(true);
         Student student = (Student) Athina.user;
-        roleLabel.setText("Στοιχεία Φοιτητή");
         usernameLabel.setText(student.getUsername());
         lastnameLabel.setText(student.getLastName());
         nameLabel.setText(student.getFirstName());
@@ -56,7 +60,7 @@ public class StudentMainPage {
     }
 
     @FXML
-    public void emfBathologias(ActionEvent event){
+    private void emfBathologias(ActionEvent event){
         setVis();
         bathmologiesPanel.setVisible(true);
         if (firstTime){
@@ -92,7 +96,7 @@ public class StudentMainPage {
     }
 
     @FXML
-    public void emfMathhmatwn(ActionEvent event){
+    private void emfMathhmatwn(ActionEvent event){
         setVis();
         mathhmataPanel.setVisible(true);
         if (firstTimeTwo){
@@ -105,12 +109,12 @@ public class StudentMainPage {
     }
 
     @FXML
-    public void dhlwseisMath(ActionEvent event){
+    private void dhlwseisMath(ActionEvent event){
         setVis();
         dhlwseisPanel.setVisible(true);
         if (firstTimeTree){
             for (int i = 0; i < Account.courses.length; i++){
-                if (!toExeiDhlwsei(i)){
+                if (Account.courses[i] != null && !toExeiDhlwsei(i)){
                     olaTaMath.getItems().add(Account.courses[i]);
                 }
             }
@@ -118,13 +122,59 @@ public class StudentMainPage {
         firstTimeTree = false;
     }
 
-    public boolean toExeiDhlwsei(int y){
+    private boolean toExeiDhlwsei(int y){
+        Student student = (Student) Athina.user;
         for (int i = 0; i< Account.registrations.length; i++){
-            if (Account.registrations[i].getCourse().getId() == Account.courses[y].getId()) {
+            if (Account.registrations[i] != null && Account.registrations[i].getStudent() == student && Account.registrations[i].getCourse() == Account.courses[y]) {
                 return true;
             }
         }
         return false;
+    }
+
+
+    @FXML
+    private void addMathima(ActionEvent event){
+        Course course = (Course) olaTaMath.getSelectionModel().getSelectedItem();
+        if (olaTaMath.getSelectionModel().getSelectedItem() != null && (course.getCredits() + dm) <= 42){
+            epilegmenaMath.getItems().add(olaTaMath.getSelectionModel().getSelectedItem());
+            dm+=course.getCredits();
+            arithmosMath++;
+            olaTaMath.getItems().remove(olaTaMath.getSelectionModel().getSelectedItem());
+            sunoloDM.setText(String.valueOf(dm));
+            sunoloMath.setText(String.valueOf(arithmosMath));
+        }
+    }
+
+    @FXML
+    private void removeMathima(ActionEvent event){
+        if (epilegmenaMath.getSelectionModel().getSelectedItem() != null){
+            olaTaMath.getItems().add(epilegmenaMath.getSelectionModel().getSelectedItem());
+            Course course = (Course) epilegmenaMath.getSelectionModel().getSelectedItem();
+            dm-=course.getCredits();
+            arithmosMath--;
+            epilegmenaMath.getItems().remove(epilegmenaMath.getSelectionModel().getSelectedItem());
+            sunoloDM.setText(String.valueOf(dm));
+            sunoloMath.setText(String.valueOf(arithmosMath));
+        }
+    }
+
+    @FXML
+    private void dhlwshMathhmatwn(){
+        if (!epilegmenaMath.getItems().isEmpty()){
+            for (int i = 0; i < epilegmenaMath.getItems().size(); i++){
+                for (int j = 0; j < Account.registrations.length; j++){
+                    if (Account.registrations[j] != null){
+                        Course course = (Course)  epilegmenaMath.getItems().get(i);
+                        Account.registrations[j] = new CourseRegistration((Student) Athina.user, course, "2020-2021 XEIM",formatter.format(Calendar.getInstance().getTime()));
+                        break;
+                    }
+                }
+            }
+        }
+        confirmText.setVisible(true);
+        addBtn.setDisable(true);
+        removeBtn.setDisable(true);
     }
 
     private void setVis(){

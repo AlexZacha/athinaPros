@@ -26,12 +26,12 @@ public class Account {
         professors[1] = new Professor("idel", "123","Ignatios", "Deligianis", "idel@teithe.gr");
         professors[2] = new Professor("stoug", "123","Stefanos", "Ougiaroglou", "stoug@teithe.gr");
         
-            admins[0] = new Admin("gkakou", "123","Georgia", "Kakou", "gkakou@it.teithe.gr");
+        admins[0] = new Admin("gkakou", "123","Georgia", "Kakou", "gkakou@it.teithe.gr");
         
         courses[0] = new Course("072", "Epixeirisiaki Ereuna", 6, 7, professors[0]);
         courses[1] = new Course("023", "Antikeimenostrefis Programmatismos", 6, 2, professors[0]);
         courses[2] = new Course("071", "Mhxaniki Logismikou", 6,7, professors[1]);
-        courses[3] = new Course("044", "Sxediash Leitourgikwn Systimatwn", 6, 4, professors[1]);
+        courses[3] = new Course("044", "Sxediash Leitourgikwn Systimatwn", 40, 4, professors[1]);
         
         registrations[0] = new CourseRegistration(students[0], courses[0], "2018-19 ΕΑΡ","20/5/2019");
         registrations[1] = new CourseRegistration(students[1], courses[1], "2018-19 XEIM","20/11/2020");

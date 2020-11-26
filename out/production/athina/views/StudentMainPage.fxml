@@ -21,13 +21,16 @@
                </font>
             </TextField>
             <ListView fx:id="olaTaMath" layoutX="-1.0" layoutY="53.0" prefHeight="150.0" prefWidth="667.0" />
-            <ListView layoutX="2.0" layoutY="250.0" prefHeight="167.0" prefWidth="661.0" />
-            <Button layoutX="581.0" layoutY="211.0" mnemonicParsing="false" text="Πρόσθεση" />
+            <ListView fx:id="epilegmenaMath" layoutX="2.0" layoutY="250.0" prefHeight="167.0" prefWidth="661.0" />
+            <Button fx:id="addBtn" layoutX="501.0" layoutY="211.0" mnemonicParsing="false" onAction="#addMathima" text="Πρόσθεση" />
             <Label layoutX="14.0" layoutY="431.0" text="Μαθήματα:" />
-            <Label layoutX="223.0" layoutY="431.0" text="Διδακτικές Μονάδες:" />
-            <TextField editable="false" layoutX="88.0" layoutY="427.0" prefHeight="25.0" prefWidth="39.0" />
-            <TextField editable="false" layoutX="351.0" layoutY="427.0" prefHeight="25.0" prefWidth="39.0" />
-            <Button layoutX="583.0" layoutY="427.0" mnemonicParsing="false" text="Αφαίρεση" />
+            <Label layoutX="166.0" layoutY="431.0" text="Διδακτικές Μονάδες:" />
+            <TextField fx:id="sunoloMath" editable="false" layoutX="88.0" layoutY="427.0" prefHeight="25.0" prefWidth="39.0" />
+            <TextField fx:id="sunoloDM" editable="false" layoutX="294.0" layoutY="427.0" prefHeight="25.0" prefWidth="39.0" />
+            <Button fx:id="removeBtn" layoutX="584.0" layoutY="211.0" mnemonicParsing="false" onAction="#removeMathima" text="Αφαίρεση" />
+            <TextField fx:id="errorField" editable="false" layoutX="17.0" layoutY="211.0" prefHeight="25.0" prefWidth="373.0" text="Προσοχή! Μπορείτε να δηλώσετε μέχρι 42 διδακτικές μονάδες" />
+            <Button fx:id="send" layoutX="583.0" layoutY="427.0" mnemonicParsing="false" onAction="#dhlwshMathhmatwn" text="Αποστολή" />
+            <Label fx:id="confirmText" layoutX="381.0" layoutY="431.0" text="Η δήλωση οριστικοποιήθηκε" visible="false" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="mathhmataPanel" layoutX="196.0" prefHeight="464.0" prefWidth="667.0" visible="false">
@@ -117,7 +120,7 @@
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <TextField fx:id="roleLabel" layoutX="219.0" layoutY="14.0" style="-fx-background-color: white;">
+            <TextField fx:id="roleLabel" editable="false" layoutX="219.0" layoutY="14.0" style="-fx-background-color: white;" text="Στοιχεία Φοιτητή">
                <font>
                   <Font size="18.0" />
                </font></TextField>
