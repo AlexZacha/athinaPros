@@ -136,7 +136,6 @@ public class ProfessorMainPage {
     }
 
 
-
     @FXML
     private void logoutButtonPressed(ActionEvent event)
     {

@@ -18,9 +18,9 @@ public class Account {
     }
     
     public void initializeData(){
-        students[0] = new Student("aalexiou","123", "Alexis", "Alexiou", "aalexiou@it.teithe.gr",3 ,new String());
-        students[1] = new Student("ddimitriou","123", "Dimitris", "Dimitriou", "ddimitriou@it.teithe.gr",5 ,new String());
-        students[2] = new Student("nnikou", "123","Nikos", "Nikou","nnikou@it.teithe.gr",3 ,new String() );
+        students[0] = new Student("aalexiou","123", "Alexis", "Alexiou", "aalexiou@it.teithe.gr",3 , "");
+        students[1] = new Student("ddimitriou","123", "Dimitris", "Dimitriou", "ddimitriou@it.teithe.gr",5 , "");
+        students[2] = new Student("nnikou", "123","Nikos", "Nikou","nnikou@it.teithe.gr",3 , "");
         
         professors[0] = new Professor("vkostogl","123", "Vasileios", "Kostoglou", "vkostogl@teithe.gr");
         professors[1] = new Professor("idel", "123","Ignatios", "Deligianis", "idel@teithe.gr");
@@ -51,7 +51,8 @@ public class Account {
         for (int i=0; i<admins.length; i++){
             if (admins[i] == null)
                 admins[i] = admin;
-                SMTP.sendEmail(users[i].getFirstName(), users[i].getLastName(), users[i].getUsername(), users[i].getPassword());
+                SMTP.sendEmail(Account.admins[i].getFirstName(), Account.admins[i].getLastName(), Account.admins[i].getUsername(),Account.admins[i].getPassword(), Account.admins[i].getEmail());
+                break;
         }
     }
     
@@ -60,12 +61,15 @@ public class Account {
         for (int i=0; i<professors.length; i++){
             if (professors[i] == null)
                 professors[i] = professor;
+                SMTP.sendEmail(Account.professors[i].getFirstName(), Account.professors[i].getLastName(), Account.professors[i].getUsername(), Account.professors[i].getPassword(), Account.professors[i].getEmail());
         }
     }
      public static void insertStudent(Student student) {
         for (int i=0; i<students.length; i++) {
             if (students[i] == null)
                 students[i] = student;
+
+                SMTP.sendEmail(Account.students[i].getFirstName(), Account.students[i].getLastName(), Account.students[i].getUsername(), Account.students[i].getPassword(), Account.students[i].getEmail());
         }
     }
          public static void insertCourse(Course course) {
